@@ -1,0 +1,31 @@
+{
+  "name": "react-template",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "src/main.jsx",
+  "scripts": {
+    "build": "webpack --mode production",
+    "preview": "npx serve dist",
+    "start": "webpack serve --mode development",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint src",
+    "lint:css": "stylelint '**/*.{css,scss}'",
+    "format:css": "stylelint '**/*.{css,scss}' --fix",
+    "format": "prettier --write . && npm run format:css",
+    "pretest": "npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:deps": "npm i react react-dom",
+    "install:linters": "npm i -D eslint@^9.7 eslint-plugin-unicorn eslint-plugin-react eslint-plugin-check-file",
+    "install:formatters": "npm i -D prettier eslint-config-prettier stylelint stylelint-config-standard",
+    "install:bundler": "npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin esbuild-loader style-loader css-loader",
+    "install:devDeps": "npm run install:linters && npm run install:formatters && npm run install:bundler",
+    "presetup": "node -e \"require('fs').rmSync('.git', { recursive: true, force: true })\" && git init",
+    "setup": "npm run install:deps && npm run install:devDeps",
+    "clean": "node -e \"const fs=require('fs'); const path=require('path'); ['dist','node_modules'].forEach(p=>fs.rmSync(path.resolve(p),{recursive:true,force:true}));\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module"
+}
